@@ -10,8 +10,8 @@ class GCS:
     """
     This class handles Google Cloud Storage list, download & upload commands.
     """
-    def __init__(self, project, bucket):
-        self.bucket = storage.Client(project=project).get_bucket(bucket)
+    def __init__(self, bucket):
+        self.bucket = storage.Client.create_anonymous_client().get_bucket(bucket)
 
     def download(self, source_blob_filename, destination_filename):
         """

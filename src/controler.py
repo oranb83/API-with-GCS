@@ -11,13 +11,12 @@ from src.plot import Plot
 #       instead or get it from the client - I prefer the client will not be aware to buckets paths
 #       for security reasons and in case I want to make API changes instead of releasing a new API
 #       version.
-PROJECT_NAME = None
 BACKET_NAME = 'levl-backend-file-examples'
 BACKET_PREFIX = 'Small/{}'
 BACKET_PREFIX_PLOTS = 'Small/plots/{}'
 LOCAL_PLOT_DIRECTORY = 'tmp/plots/'
 
-storage_client = GCS(PROJECT_NAME, BACKET_NAME)
+storage_client = GCS(BACKET_NAME)
 ziper = Zip()
 
 
