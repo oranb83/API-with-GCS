@@ -11,7 +11,7 @@ class GCS:
     This class handles Google Cloud Storage list, download & upload commands.
     """
     def __init__(self, project, bucket):
-        self.bucket = storage.Client(project=self.project).get_bucket(self.main_bucket)
+        self.bucket = storage.Client(project=project).get_bucket(bucket)
 
     def download(self, source_blob_filename, destination_filename):
         """

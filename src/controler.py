@@ -1,22 +1,23 @@
 import os
 
-from gcs import GCS
-from helpers import json_to_packets
-from zipper import Zip
-from plot import Plot
+from src.gcs import GCS
+from src.helpers import json_to_packets
+from src.zipper import Zip
+from src.plot import Plot
 
-BACKET_NAME = 'levl-backend-file-examples'
+# TODO: @oran - all the constants should be in KMS so I can manage my environment -
+#       bare minimum is to use a config file.
 # TODO: @oran - do I need to change the "Small" prefix via code, is there a huristic I can use
 #       instead or get it from the client - I prefer the client will not be aware to buckets paths
 #       for security reasons and in case I want to make API changes instead of releasing a new API
 #       version.
-# TODO: @oran - all of this should be in KMS so I can manage my environment - bare minimum is to use a
-#       config file.
+PROJECT_NAME = ''
+BACKET_NAME = 'levl-backend-file-examples'
 BACKET_PREFIX = 'Small/{}'
 BACKET_PREFIX_PLOTS = 'Small/plots/{}'
-LOCAL_PLOT_DIRECTORY = '~/.tmp/plots/'
+LOCAL_PLOT_DIRECTORY = 'tmp/plots/'
 
-storage_client = GCS(BACKET_NAME)
+storage_client = GCS(PROJECT_NAME, BACKET_NAME)
 ziper = Zip()
 
 
@@ -50,13 +51,13 @@ class Controler:
         json_file = storage_client.download(download_source_file, download_destination_file)
 
         # Get packets
-        packets = json_to_packets(json_file)
+        packets = iter(json_to_packets(json_file))
 
         # Create plot from packets
         # TODO: @oran - we need to send each packet or batch of packets to other services to
         #       deal with this with big files we might have mem issues.
         #       Let's assume it's ok for a POC.
-        is_success, plots_dir = Plot(json_file).create_plot()
+        is_success, plots_dir = Plot(LOCAL_PLOT_DIRECTORY).create_plots(json_file, packets)
         if not is_success:
             logger.warning('Not all packets where successfuly parsed in this file: %s', filename)
 

@@ -1,6 +1,6 @@
 from flask import Flask, request, Response, jsonify
 
-from controler import Controler
+from src.controler import Controler
 
 POST = 'POST'
 API_VERSION = 'v1'
@@ -15,22 +15,22 @@ def hello_world():
     return jsonify({'landing page!'})
 
 
-@app.route(f'{API_VERSION}/health/')
+@app.route(f'/{API_VERSION}/health/')
 def health():
     return jsonify({'msg': 'I am healthy!'})
 
 
-@app.route(f'{API_VERSION}/plot/<id>/')
+@app.route(f'/{API_VERSION}/plot/<id>/')
 def get_plot(id):
     """
     @type id: str
     @param id: unique filename
     """
     # Note: please check control.get_plots(..) for future implementation details
-    return Response({'msg': 'not implemented'}, 501)
+    return Response(jsonify({'msg': 'not implemented'}), 501)
 
 
-@app.route(f'{API_VERSION}/plot/', methods=[POST])
+@app.route(f'/{API_VERSION}/plot/', methods=[POST])
 def create_plot():
     data = request.json
     # Mandatory field as part of the schema
@@ -41,6 +41,7 @@ def create_plot():
         return Response(jsonify({'msg': 'Bad request, missing ids in payload'}), 400)
 
     app.logger.debug('received %s: %s', ids, data[ids])
+
     for filename in data[ids]:
         # TODO: @oran - add multiprocess to send the work to the controler
         # TODO: @oran - I need to get the status of each run of this method, use repsonse handler

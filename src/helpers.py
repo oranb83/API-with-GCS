@@ -1,11 +1,11 @@
-import sys
 import os
+import sys
 import json
 import base64
 import logging
 
 import numpy as np
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 
 logger = logging.getLogger(__name__)
 
