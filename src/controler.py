@@ -11,7 +11,7 @@ from src.plot import Plot
 #       instead or get it from the client - I prefer the client will not be aware to buckets paths
 #       for security reasons and in case I want to make API changes instead of releasing a new API
 #       version.
-PROJECT_NAME = ''
+PROJECT_NAME = None
 BACKET_NAME = 'levl-backend-file-examples'
 BACKET_PREFIX = 'Small/{}'
 BACKET_PREFIX_PLOTS = 'Small/plots/{}'
