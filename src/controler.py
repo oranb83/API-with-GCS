@@ -55,7 +55,8 @@ class Controler:
 
         # Create plot from packets
         # TODO: @oran - we need to send each packet or batch of packets to other services to
-        #       deal with this with big files we might have mem issues.
+        #       deal with big files or we might have mem issues - I used iter above but it should
+        #       have been done in the helpers.py and not in the above line - too late!.
         #       Let's assume it's ok for a POC.
         is_success, plots_dir = Plot(LOCAL_PLOT_DIRECTORY).create_plots(json_file, packets)
         if not is_success:
