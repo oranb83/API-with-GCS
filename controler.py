@@ -27,10 +27,15 @@ class Controler:
     def create_plot(self, filename):
         """
         This method does the following (which is too much):
-            1. Download a file from GCS.
-            2. Do convertion from json file to packets.
-            3. Plot per packet.
-            4. Upload plot.
+            1. Update the DB to "in progress" (not done)
+            2. Verify that the file exist in GCS (not done)
+            3. Download the file from GCS.
+            4. Do convertion from json file to packets.
+            5. Plot per packet.
+            6. Upload plots to a new bucket (we will use the only bucket I have with a dirname of
+               the json file for all of it's packet plots).
+            7. Update the DB to "success" (not done)
+               Also need to update the DB to "fail" if any other step failed (not done)
 
         @note: need to send data to SQL DB upon start (in progress) and change it to
                in_progress / success / failed later. I did not get any open DB in GCP so this part

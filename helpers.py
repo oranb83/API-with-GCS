@@ -5,7 +5,7 @@ import base64
 import logging
 
 import numpy as np
-from matplotlib import pyplot as plt
+import matplotlib.pyplot as plt
 
 logger = logging.getLogger(__name__)
 

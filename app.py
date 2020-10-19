@@ -26,12 +26,8 @@ def get_plot(id):
     @type id: str
     @param id: unique filename
     """
-    pass
-    # filename = request.params[id]
-    # # TODO: @oran - implement see the notes in the controler
-    # control.get_plots(filename)
-
-    # return Response({'msg': 'not implemented'}, 200)
+    # Note: please check control.get_plots(..) for future implementation details
+    return Response({'msg': 'not implemented'}, 501)
 
 
 @app.route(f'{API_VERSION}/plot/', methods=[POST])
