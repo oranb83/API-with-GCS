@@ -12,7 +12,7 @@ control = Controler()
 @app.route('/')
 def hello_world():
     # TODO: @oran - add in index.html here!
-    return 'Hello, World!'
+    return jsonify({'landing page!'})
 
 
 @app.route(f'{API_VERSION}/health/')
@@ -26,11 +26,12 @@ def get_plot(id):
     @type id: str
     @param id: unique filename
     """
-    filename = request.params['id']
-    # TODO: @oran - implement see the notes in the controler
-    control.get_plots(filename)
+    pass
+    # filename = request.params[id]
+    # # TODO: @oran - implement see the notes in the controler
+    # control.get_plots(filename)
 
-    return Response({'msg': 'not implemented'}, 200)
+    # return Response({'msg': 'not implemented'}, 200)
 
 
 @app.route(f'{API_VERSION}/plot/', methods=[POST])

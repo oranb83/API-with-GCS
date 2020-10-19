@@ -10,6 +10,8 @@ BACKET_NAME = 'levl-backend-file-examples'
 #       instead or get it from the client - I prefer the client will not be aware to buckets paths
 #       for security reasons and in case I want to make API changes instead of releasing a new API
 #       version.
+# TODO: @oran - all of this should be in KMS so I can manage my environment - bare minimum is to use a
+#       config file.
 BACKET_PREFIX = 'Small/{}'
 BACKET_PREFIX_PLOTS = 'Small/plots/{}'
 LOCAL_PLOT_DIRECTORY = '~/.tmp/plots/'
